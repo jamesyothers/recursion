@@ -38,8 +38,10 @@ var stringifyJSON = function(obj) {
       if (counter) {
         result += ',';
       }
-      result += (stringifyJSON(key) + ":" + stringifyJSON(obj[key]));
-      counter++;
+      if (!(key === 'functions' || key === 'undefined')) {
+        result += (stringifyJSON(key) + ":" + stringifyJSON(obj[key]));
+        counter++;
+      }
     }
     return result + "}";
   }
