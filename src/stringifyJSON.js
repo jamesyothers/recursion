@@ -26,12 +26,22 @@ var stringifyJSON = function(obj) {
     var result = "[" + obj.map(function(element,index,obj) {
       return stringifyJSON(element);    
     });
-    return result + "]";
-    //[0,1,2,3,4].reduce(function(previousValue, currentValue, index, array){
-    //obj.reduce(function(element,accumulator,index,obj) {
-    //  return accumulator + element;   
-    //});
-    //return "[" + obj + "]";                
+    return result + "]";               
+  }
+  else if (typeof obj === 'object' && Object.keys(obj).length === 0) {
+    return "{}";
+  }
+  else if (typeof obj) {
+    var result = "{";
+    var counter = 0;
+    for (var key in obj) {
+      if (counter) {
+        result += ',';
+      }
+      result += (stringifyJSON(key) + ":" + stringifyJSON(obj[key]));
+      counter++;
+    }
+    return result + "}";
   }
 
 };
