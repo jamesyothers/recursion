@@ -38,7 +38,7 @@ var stringifyJSON = function(obj) {
       if (counter) {
         result += ',';
       }
-      if (!(key === 'functions' || key === 'undefined')) {
+      if (!(key === 'functions' || key === 'undefined' || typeof obj[key] === 'function' || obj[key] === 'undefined')) {
         result += (stringifyJSON(key) + ":" + stringifyJSON(obj[key]));
         counter++;
       }
