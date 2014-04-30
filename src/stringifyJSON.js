@@ -6,32 +6,24 @@ var stringifyJSON = function(obj) {
   console.log(obj);
   if (typeof obj === 'number') {
     return obj.toString();
-  }
-  else if (obj === null) {
+  } else if (obj === null) {
     return 'null';
-  }
-  else if (obj === true) {
+  } else if (obj === true) {
     return 'true';
-  }
-  else if (obj === false) {
+  } else if (obj === false) {
     return 'false';
-  }
-  else if (typeof obj === 'string') {
+  } else if (typeof obj === 'string') {
     return '"' + obj + '"';
-  }
-  else if (Array.isArray(obj) && obj.length === 0) {
+  } else if (Array.isArray(obj) && obj.length === 0) {
     return "[]";
-  }
-  else if (Array.isArray(obj)) {
+  } else if (Array.isArray(obj)) {
     var result = "[" + obj.map(function(element,index,obj) {
       return stringifyJSON(element);    
     });
     return result + "]";               
-  }
-  else if (typeof obj === 'object' && Object.keys(obj).length === 0) {
+  } else if (typeof obj === 'object' && Object.keys(obj).length === 0) {
     return "{}";
-  }
-  else if (typeof obj) {
+  } else if (typeof obj) {
     var result = "{";
     var counter = 0;
     for (var key in obj) {
@@ -44,6 +36,7 @@ var stringifyJSON = function(obj) {
       }
     }
     return result + "}";
+  } else {
+    return undefined;
   }
-
 };
