@@ -23,14 +23,14 @@ var stringifyJSON = function(obj) {
     return result + "]";               
   } else if (typeof obj === 'object' && Object.keys(obj).length === 0) {
     return "{}";
-  } else if (typeof obj) {
+  } else if (typeof obj === 'object') {
     var result = "{";
     var counter = 0;
     for (var key in obj) {
       if (counter) {
         result += ',';
       }
-      if (!(key === 'functions' || key === 'undefined' || typeof obj[key] === 'function' || obj[key] === 'undefined')) {
+      if (!(typeof obj[key] === 'function' || obj[key] === undefined)) {
         result += (stringifyJSON(key) + ":" + stringifyJSON(obj[key]));
         counter++;
       }
