@@ -5,35 +5,69 @@
 
 // But instead we're going to implement it from scratch:
 var getElementsByClassName = function(className){
-  var result = [];
-  //console.log(className);
-  if (className === document.body.className) {
-    result.push(document.body);
-  };
-  //console.log(document.body);
-
-  //console.log(document.body.childNodes.length);
-  var elements = document.body.childNodes;
-  //console.log(elements.length);
-  //console.log(elements);
-  for (var i=0; i < elements.length; i++) {
-    //console.log(elements[3]);
-    //console.log(elements[3].classList);
-    if (elements[i].classList && elements[i].classList.contains(className)) {
-      result.push(elements[i]);
+  if (!result) {
+    var result = [];
+    if (className === document.body.className) {
+      result.push(document.body);
     }
+    var counter = 0;
+    var elements = document.body.childNodes;
   }
+  console.log(document.body);
+  console.log(elements);
 
-  //elements.forEach(function(element,index,elements) {
-  //  console.log(element);
-  //});
-  //console.log(document.body);
-  //console.log(document.body.className);
+  for (var i=0; i < elements.length; i++) {
+      console.log(elements[i]);
+    if (elements[i].classList && elements[i].classList.contains(className)) {
+      //console.log(elements[i]);
+      result.push(elements[i]);
+
+      //console.log(elements[i].childNodes);
+      //if (elements[i].childNodes) {
+      //  elements = elements[i].childNodes;
+      //  getElementsByClassName(className);  
+      //} 
+    } 
+
+  }
+/*
+
+    if (elements[i].childNodes.length > 0) {
+      console.log(elements[i].childNodes);
+      elements = elements[i].childNodes;
+      console.log(elements);
+      //getElementsByClassName(className);  
+    }
+ /*
+  for (var j=0; j < elements.length; j++) {
+    while (elements[j].childNodes.length > 0) {
+      elements = elements[j].childNodes;
+      //getElementsByClassName(className);
+      if (elements[j].classList && elements[j].classList.contains(className)) {
+        result.push(elements[j]);
+      }
+    }
+
+  }
+*/
+  counter++;
+
+  
+  
+    /*
+    if (elements[i].childNodes.length > 0) {
+      
+      
+      for (var j=0; j < elements[i].childNodes.length; j++) {
+      
+        if (elements[i].childNodes[j] && elements[i].childNodes[j].classList.contains(className)) {
+          //console.log(elements[i].childNodes[j]);
+          result.push(elements[i].childNodes[j]);
+        }
+      }
+    }
+  */
   
   return result;
-  //console.log(document.body.className.childNodes);  //undefined
-  //console.log((className === document.body.className) ? result.push(document.body):result);
-  //return (className === document.body.className) ? result.push(document.body):result;
-  //element.classList 
-  //element.className,  check if an element's list of classes contains a specific class
+  
 };
